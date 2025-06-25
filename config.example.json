@@ -1,0 +1,14 @@
+{
+  "openai": {
+    "apiKey": "your-openai-api-key-here",
+    "model": "gpt-4o"
+  },
+  "mcpServers": [
+    {
+      "name": "filesystem",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/files"],
+      "env": {}
+    }
+  ]
+} 
