@@ -6,9 +6,21 @@
   "mcpServers": [
     {
       "name": "filesystem",
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/files"],
-      "env": {}
+      "command": "node",
+      "args": ["dist/filesystem-server-standalone.js", "/Users/username/Documents", "/Users/username/Projects"]
+    },
+    {
+      "name": "memory-server",
+      "command": "node",
+      "args": ["dist/mcp/server.js"],
+      "env": {
+        "MEMORY_FILE_PATH": "./memory.json"
+      }
     }
-  ]
+  ],
+  "memory": {
+    "enabled": true,
+    "filePath": "./memory.json",
+    "autoSave": true
+  }
 } 

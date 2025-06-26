@@ -35,4 +35,73 @@ export interface AppConfig {
     model?: string;
   };
   mcpServers: MCPServerConfig[];
+  memory?: {
+    enabled?: boolean;
+    filePath?: string;
+    autoSave?: boolean;
+  };
+}
+
+// Memory-specific types
+export interface MemoryEntity {
+  name: string;
+  entityType: string;
+  observations?: string[];
+}
+
+export interface MemoryRelation {
+  from: string;
+  to: string;
+  relationType: string;
+}
+
+export interface MemoryNode {
+  name: string;
+  entityType: string;
+  observations: string[];
+  relations: MemoryRelation[];
+}
+
+export interface MemoryGraph {
+  entities: Record<string, MemoryNode>;
+}
+
+export interface MemorySearchResult {
+  name: string;
+  entityType: string;
+  observations: string[];
+  relations: MemoryRelation[];
+  score?: number;
+}
+
+// Filesystem-specific types
+export interface FileInfo {
+  path: string;
+  size: number;
+  isFile: boolean;
+  isDirectory: boolean;
+  isSymbolicLink: boolean;
+  permissions: number;
+  created: Date;
+  modified: Date;
+  accessed: Date;
+}
+
+export interface DirectoryEntry {
+  name: string;
+  size: number;
+  isDirectory: boolean;
+  isFile: boolean;
+}
+
+export interface FileEdit {
+  oldText: string;
+  newText: string;
+}
+
+export interface SearchResult {
+  pattern: string;
+  matches: string[];
+  totalFound: number;
+  showing: number;
 } 

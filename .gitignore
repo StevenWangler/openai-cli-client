@@ -44,6 +44,12 @@ pids/
 # Config files with secrets
 config.json
 
+# Memory data files (contain personal information)
+memory.json
+comprehensive-memory.json
+*-memory.json
+filesystem-memory.json
+
 # TypeScript
 *.tsbuildinfo
 

@@ -19,7 +19,7 @@ launch_in_terminal() {
                         tell application \"iTerm2\"
                             create window with default profile
                             tell current session of current window
-                                write text \"cd '$PROJECT_DIR' && npm run start\"
+                                write text \"cd '$PROJECT_DIR' && node dist/index.js chat -c config.json\"
                             end tell
                             activate
                         end tell
@@ -28,7 +28,7 @@ launch_in_terminal() {
                 else
                     osascript -e "
                         tell application \"Terminal\"
-                            do script \"cd '$PROJECT_DIR' && npm run start\"
+                            do script \"cd '$PROJECT_DIR' && node dist/index.js chat -c config.json\"
                             activate
                         end tell
                     "
@@ -41,11 +41,11 @@ launch_in_terminal() {
         linux*)
             # Linux - try common terminal emulators
             if command -v gnome-terminal >/dev/null 2>&1; then
-                gnome-terminal --working-directory="$PROJECT_DIR" -- bash -c "npm run start; exec bash"
+                gnome-terminal --working-directory="$PROJECT_DIR" -- bash -c "node dist/index.js chat -c config.json; exec bash"
             elif command -v konsole >/dev/null 2>&1; then
-                konsole --workdir "$PROJECT_DIR" -e bash -c "npm run start; exec bash"
+                konsole --workdir "$PROJECT_DIR" -e bash -c "node dist/index.js chat -c config.json; exec bash"
             elif command -v xterm >/dev/null 2>&1; then
-                xterm -e "cd '$PROJECT_DIR' && npm run start; exec bash" &
+                xterm -e "cd '$PROJECT_DIR' && node dist/index.js chat -c config.json; exec bash" &
             else
                 echo "Error: No suitable terminal emulator found"
                 exit 1
@@ -54,7 +54,7 @@ launch_in_terminal() {
         msys*|cygwin*|mingw*)
             # Windows (Git Bash, etc.)
             if command -v cmd.exe >/dev/null 2>&1; then
-                cmd.exe /c "start cmd /k \"cd /d $PROJECT_DIR && npm run start\""
+                cmd.exe /c "start cmd /k \"cd /d $PROJECT_DIR && node dist/index.js chat -c config.json\""
             else
                 echo "Error: cmd.exe not found"
                 exit 1

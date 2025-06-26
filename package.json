@@ -10,12 +10,28 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
-    "start": "node dist/index.js",
+    "start": "node dist/index.js chat -c config.json",
     "watch": "tsx watch src/index.ts",
     "popup": "./scripts/launch-popup.sh",
     "create-app": "./scripts/create-app.sh",
     "desktop-shortcut": "./scripts/create-desktop-shortcut.sh",
-    "install-global": "npm run build && npm link"
+    "install-global": "npm run build && npm link",
+    "memory-server": "node dist/memory-server-standalone.js",
+    "memory-dev": "tsx src/memory-server-standalone.ts",
+    "memory-inspector": "npm run build && npx @modelcontextprotocol/inspector node dist/mcp/server.js",
+    "filesystem-server": "node dist/filesystem-server-standalone.js",
+    "filesystem-dev": "tsx src/filesystem-server-standalone.ts",
+    "filesystem-inspector": "npm run build && npx @modelcontextprotocol/inspector node dist/filesystem-server-standalone.js",
+    "filesystem-memory-server": "node dist/filesystem-memory-server-standalone.js",
+    "filesystem-memory-dev": "tsx src/filesystem-memory-server-standalone.ts",
+    "filesystem-memory-inspector": "npm run build && npx @modelcontextprotocol/inspector node dist/filesystem-memory-server-standalone.js",
+    "comprehensive-server": "node dist/comprehensive-filesystem-memory-server-standalone.js",
+    "comprehensive-dev": "tsx src/comprehensive-filesystem-memory-server-standalone.ts",
+    "comprehensive-inspector": "npm run build && npx @modelcontextprotocol/inspector node dist/comprehensive-filesystem-memory-server-standalone.js",
+    "filesystem-dynamic-dev": "tsx src/filesystem-server-standalone.ts --config-file=./filesystem-config.json",
+    "filesystem-dynamic-inspector": "npm run build && npx @modelcontextprotocol/inspector node dist/filesystem-server-standalone.js --config-file=./filesystem-config.json",
+    "comprehensive-dynamic-dev": "tsx src/comprehensive-filesystem-memory-server-standalone.ts --config-file=./comprehensive-config.json",
+    "comprehensive-dynamic-inspector": "npm run build && npx @modelcontextprotocol/inspector node dist/comprehensive-filesystem-memory-server-standalone.js --config-file=./comprehensive-config.json"
   },
   "keywords": [
     "openai",
@@ -36,6 +52,7 @@
     "cli-boxes": "^3.0.0",
     "commander": "^12.1.0",
     "dotenv": "^16.5.0",
+    "glob": "^11.0.0",
     "gradient-string": "^2.0.2",
     "inquirer": "^12.0.0",
     "marked": "^15.0.12",
@@ -44,6 +61,7 @@
     "terminal-link": "^3.0.0"
   },
   "devDependencies": {
+    "@types/glob": "^8.1.0",
     "@types/inquirer": "^9.0.7",
     "@types/node": "^22.10.2",
     "tsx": "^4.19.2",
