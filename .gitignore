@@ -43,6 +43,7 @@ pids/
 
 # Config files with secrets
 config.json
+comprehensive-filesystem-config.json
 
 # Memory data files (contain personal information)
 memory.json
